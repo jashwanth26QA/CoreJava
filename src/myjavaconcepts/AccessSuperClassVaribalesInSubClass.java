@@ -6,8 +6,8 @@ public class AccessSuperClassVaribalesInSubClass extends AccessSuperClassVariabl
     int x=50;
 
     public  void display(){
-        System.out.println(super.x);
-        System.out.println("This number is in "+x);
+        System.out.println("The number from parent class using super is "+super.x);
+        System.out.println("This number in child class "+x);
     }
 
     public static void main(String[] ags){
