@@ -49,5 +49,17 @@ In this class we perform various kind of operations get,idexOf,contains,add,etc.
         ArrayList<String> ar2 = new ArrayList<String>(Arrays.asList("Australia","Bengal","California","Sweden"));
         System.out.println(ar2.lastIndexOf("Bengal"));
 
+        /*
+        Here we will convert an ArrayList to String Array
+         */
+        ArrayList<String> m=new ArrayList<>();
+        m.add("Infosys");
+        m.add("Cognizant");
+        m.add("Wipro");
+
+        String myArray[]=m.toArray(new String[m.size()]);
+         for(int i=0;i<myArray.length;i++){
+             System.out.println(myArray[i]);
+         }
     }
 }
