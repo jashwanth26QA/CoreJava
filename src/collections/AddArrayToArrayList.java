@@ -9,7 +9,7 @@ public class AddArrayToArrayList {
         String []strArray={"India","is","the","greatest","Country"};
         List<String> sList=new ArrayList<>();
         /*
-        Here, with the help of Collections.addAll(Destination,Source);
+        Here with the help of Collections.addAll(Destination,Source);
         All items from source(strArray) will be moved to destination(sList)
          */
         Collections.addAll(sList,strArray);
