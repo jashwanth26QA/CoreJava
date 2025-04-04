@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.SourceType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class BrowserDefinition {
 
     static WebDriver driver;
+    WebElement element;
+    WebDriverWait wait;
 
     BrowserDefinition(String url) {
         try {
@@ -37,6 +40,16 @@ public class BrowserDefinition {
         } catch (Exception ae) {
             System.out.println(ae);
         }
+    }
+
+    public String getElementText(WebElement element){
+        String getElemeText=element.getText();
+        return getElemeText;
+    }
+
+    public void click(By by) {
+        element = driver.findElement(by);
+        element.click();
     }
 
     public boolean isMyElementPresent(WebElement element, String locName) {
@@ -61,10 +74,24 @@ public class BrowserDefinition {
         return elements;
     }
 
-    public boolean isVisible(WebElement element, String locatorName) {
+    public boolean isVisible(By by, String locatorName) {
         boolean flag = false;
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            element=driver.findElement(by);
+            wait.until(ExpectedConditions.visibilityOf(element));
+            flag = element.isDisplayed();
+            System.out.println("Element: " + element + " is Visible");
+            flag = true;
+        } catch (Exception e) { // e.printStackTrace();
+            System.out.println("Element: " + element + " is Not Visible");
+        }
+        return flag;
+    }
+    public boolean isVisible(WebElement element, String locatorName) {
+        boolean flag = false;
+        try {
+            wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.visibilityOf(element));
             flag = element.isDisplayed();
             System.out.println("Element: " + element + " is Visible");
@@ -125,6 +152,40 @@ public class BrowserDefinition {
             e.printStackTrace();
         }
         return status;
+    }
+
+    public void switchToDesiredFrame(WebElement element){
+        List<WebElement> elements = driver.findElements(By.tagName("iframe"));
+        int numberOfTags = elements.size();
+        System.out.println("No. of Iframes on this Web Page are: " +numberOfTags);
+        driver.switchTo().frame(element);
+
+    }
+
+    public void switchToDefaultFrame() {
+        driver.switchTo().defaultContent();
+        System.out.println("Switched to Frame: Parent Frame");
+    }
+
+    public void type(WebElement element, String testData, String locatorName) {
+        element.clear();
+        System.out.println("Cleared the existing Locator data : ");
+        scroll(element);
+        element.sendKeys(testData);
+        System.out.println("Typed the Locator data :: " + testData);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    }
+
+    public void clickOnPopUp(){
+        try{
+        wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        return;
+            }finally {
+            System.out.println("Pop Up has been handled");
+        }
     }
 }
 
