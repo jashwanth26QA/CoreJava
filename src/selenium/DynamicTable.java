@@ -3,7 +3,6 @@ package selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
 public class DynamicTable extends BrowserDefinition {
@@ -14,7 +13,6 @@ public class DynamicTable extends BrowserDefinition {
     }
 
     public void handleDynamicTable(String value) {
-
         List<WebElement> li = driver.findElements(By.xpath("//tbody/tr"));
         int count = li.size();
         String tableRow = "//tbody/tr[";
