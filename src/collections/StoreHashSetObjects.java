@@ -9,5 +9,4 @@ public class StoreHashSetObjects {
         colgName=cName;
         rollNumber=rNumber;
     }
-
 }

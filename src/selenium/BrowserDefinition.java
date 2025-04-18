@@ -22,7 +22,7 @@ public class BrowserDefinition {
 
     BrowserDefinition(String url) {
         try {
-            System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver_133.exe");
+            System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.get(url);
             driver.manage().window().maximize();
