@@ -1,13 +1,11 @@
-package trialAnderror;
+package myprograms;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MyTest {
+public class CheckVowel {
 
     public static void main(String[] args) {
-
         String a="javaisfun";
         Set<Character> appendVowel=new HashSet<>();
         for(int i=0;i<a.length();i++){
@@ -22,5 +20,3 @@ public class MyTest {
         System.out.println(appendVowel);
     }
 }
-
-
